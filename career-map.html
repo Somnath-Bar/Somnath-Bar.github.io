@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="https://unpkg.com/d3@7.9.0/dist/d3.min.js" integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js" integrity="sha384-Ukv1p/xTma6P4/2bY5KzWBw+ydSpXmhCMtyciIQVDJ1RmOxtCYNMF1uXT9T63H67" crossorigin="anonymous"></script>
+<style>
+  html,body{margin:0;padding:0;background:#f7f5ee;font-family:'Public Sans',sans-serif;}
+  #map{width:100%;height:100%;}
+  .label{font-size:11px;fill:#1f2a22;font-family:'Public Sans',Helvetica,sans-serif;}
+  .sub{font-size:9.5px;fill:#54604f;font-family:'Public Sans',Helvetica,sans-serif;}
+  .panel-title{font-size:11px;letter-spacing:0.06em;text-transform:uppercase;fill:#9c6b30;font-weight:600;}
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+const nodes = [
+  {name:"Vidyasagar University", place:"Midnapore, India", years:"2012–2017", lat:22.4707, lon:87.3119},
+  {name:"Central University of Jharkhand", place:"Ranchi, India", years:"2018–2022", lat:23.4559, lon:85.2907},
+  {name:"WTW Climate Resilient Hub", place:"Mumbai, India", years:"2022–2023", lat:19.0760, lon:72.8777},
+  {name:"University of Southampton", place:"Southampton, UK", years:"2023–2025", lat:50.9351, lon:-1.3958},
+  {name:"University of California, Irvine", place:"Irvine, USA", years:"2024–Present", lat:33.6405, lon:-117.8443}
+];
+const indiaNodes = nodes.slice(0,3);
+
+const width = 960, height = 520;
+const svg = d3.select("#map").append("svg")
+  .attr("viewBox", "0 0 " + width + " " + height)
+  .attr("width", "100%").attr("height", "100%");
+
+const projection = d3.geoNaturalEarth1().rotate([-10,0]).fitSize([width-40, height-40], {type:"Sphere"});
+projection.translate([width/2, height/2 + 10]);
+const path = d3.geoPath(projection);
+
+fetch("https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json")
+  .then(r => r.json())
+  .then(topology => {
+    const countries = topojson.feature(topology, topology.objects.countries);
+    const india = countries.features.find(f => f.id === "356" || f.id === 356);
+
+    svg.append("path").datum({type:"Sphere"}).attr("d", path).attr("fill", "#eef0e2").attr("stroke", "none");
+    svg.append("g").selectAll("path").data(countries.features).enter().append("path")
+      .attr("d", path).attr("fill", "#e2e6d2").attr("stroke", "#d3d9c4").attr("stroke-width", 0.6);
+
+    const line = d3.line().curve(d3.curveBasis);
+    for (let i = 0; i < nodes.length - 1; i++) {
+      const a = projection([nodes[i].lon, nodes[i].lat]);
+      const b = projection([nodes[i+1].lon, nodes[i+1].lat]);
+      const mx = (a[0]+b[0])/2, my = (a[1]+b[1])/2 - 40;
+      svg.append("path")
+        .attr("d", line([a, [mx,my], b]))
+        .attr("fill", "none").attr("stroke", "#9c6b30").attr("stroke-width", 1.6)
+        .attr("stroke-dasharray", "4 3");
+    }
+
+    // mark the zoomed region on the main map with a dashed box around India
+    const indiaBoxPts = [[68,6],[97,6],[97,37],[68,37]].map(projection);
+    const bx0 = Math.min(...indiaBoxPts.map(p=>p[0])), bx1 = Math.max(...indiaBoxPts.map(p=>p[0]));
+    const by0 = Math.min(...indiaBoxPts.map(p=>p[1])), by1 = Math.max(...indiaBoxPts.map(p=>p[1]));
+    svg.append("rect").attr("x", bx0).attr("y", by0).attr("width", bx1-bx0).attr("height", by1-by0)
+      .attr("fill", "none").attr("stroke", "#9c6b30").attr("stroke-width", 1.2).attr("stroke-dasharray", "3 2");
+
+    const g = svg.selectAll("g.node").data(nodes).enter().append("g").attr("class","node")
+      .attr("transform", d => { const p = projection([d.lon, d.lat]); return "translate(" + p[0] + "," + p[1] + ")"; });
+
+    g.append("circle").attr("r", 5).attr("fill", "#4a6741").attr("stroke", "#fff").attr("stroke-width", 1.5);
+    g.append("text").attr("class","label").attr("x", 9).attr("y", 3).text(d => d.name);
+    g.append("text").attr("class","label").attr("x", 9).attr("y", 15).attr("font-weight","600").text(d => d.place);
+    g.append("text").attr("class","sub").attr("x", 9).attr("y", 26).text(d => d.years);
+
+    // --- India inset box, bottom-right corner ---
+    const insetW = 260, insetH = 220, insetX = width - insetW - 16, insetY = height - insetH - 16;
+    const insetG = svg.append("g").attr("transform", "translate(" + insetX + "," + insetY + ")");
+    insetG.append("rect").attr("width", insetW).attr("height", insetH).attr("fill", "#fbfaf5")
+      .attr("stroke", "#9c6b30").attr("stroke-width", 1.4).attr("rx", 4);
+
+    // connector lines from inset corners to the box on the main map
+    svg.append("line").attr("x1", bx0).attr("y1", by1).attr("x2", insetX).attr("y2", insetY)
+      .attr("stroke", "#c9c2ac").attr("stroke-width", 1);
+    svg.append("line").attr("x1", bx1).attr("y1", by1).attr("x2", insetX + insetW).attr("y2", insetY)
+      .attr("stroke", "#c9c2ac").attr("stroke-width", 1);
+
+    const projI = d3.geoMercator().fitExtent([[14,14],[insetW-14,insetH-14]], india);
+    projI.clipExtent([[0,0],[insetW,insetH]]);
+    const pathI = d3.geoPath(projI);
+    const clippedG = insetG.append("g");
+    clippedG.append("path").datum(india).attr("d", pathI).attr("fill", "#e2e6d2").attr("stroke", "#c9c2ac").attr("stroke-width", 0.8);
+
+    const lineI = d3.line().curve(d3.curveBasis);
+    for (let i = 0; i < indiaNodes.length - 1; i++) {
+      const a = projI([indiaNodes[i].lon, indiaNodes[i].lat]);
+      const b = projI([indiaNodes[i+1].lon, indiaNodes[i+1].lat]);
+      const mx = (a[0]+b[0])/2 + 22, my = (a[1]+b[1])/2;
+      clippedG.append("path").attr("d", lineI([a,[mx,my],b]))
+        .attr("fill","none").attr("stroke","#9c6b30").attr("stroke-width",1.6).attr("stroke-dasharray","3 2");
+    }
+    const gI = clippedG.selectAll("g.node").data(indiaNodes).enter().append("g")
+      .attr("transform", d => { const p = projI([d.lon, d.lat]); return "translate(" + p[0] + "," + p[1] + ")"; });
+    gI.append("circle").attr("r", 4).attr("fill", "#4a6741").attr("stroke", "#fff").attr("stroke-width", 1.2);
+    gI.append("text").attr("class", "sub").attr("x", 7).attr("y", 3).attr("font-weight", "600")
+      .text(d => d.place.replace(", India",""));
+  });
+</script>
+</body>
+</html>
