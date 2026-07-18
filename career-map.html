@@ -50,8 +50,8 @@ fetch("https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json")
       const mx = (a[0]+b[0])/2, my = (a[1]+b[1])/2 - 40;
       svg.append("path")
         .attr("d", line([a, [mx,my], b]))
-        .attr("fill", "none").attr("stroke", "#9c6b30").attr("stroke-width", 1.6)
-        .attr("stroke-dasharray", "4 3");
+        .attr("fill", "none").attr("stroke", "#9c6b30").attr("stroke-width", 2)
+        .attr("stroke-dasharray", "7 2");
     }
 
     // mark the zoomed region on the main map with a dashed box around India
@@ -65,9 +65,25 @@ fetch("https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json")
       .attr("transform", d => { const p = projection([d.lon, d.lat]); return "translate(" + p[0] + "," + p[1] + ")"; });
 
     g.append("circle").attr("r", 5).attr("fill", "#4a6741").attr("stroke", "#fff").attr("stroke-width", 1.5);
-    g.append("text").attr("class","label").attr("x", 9).attr("y", 3).text(d => d.name);
-    g.append("text").attr("class","label").attr("x", 9).attr("y", 15).attr("font-weight","600").text(d => d.place);
-    g.append("text").attr("class","sub").attr("x", 9).attr("y", 26).text(d => d.years);
+    const mainLabelOffsets = [
+      {x: -9, y: -46, anchor: "end"},
+      {x: 14, y: 18, anchor: "start"},
+      {x: -9, y: 44, anchor: "end"},
+      {x: 9, y: 9, anchor: "start"},
+      {x: 9, y: 9, anchor: "start"}
+    ];
+    g.append("text").attr("class","label")
+      .attr("x", (d,i) => mainLabelOffsets[i].x).attr("y", (d,i) => mainLabelOffsets[i].y)
+      .attr("text-anchor", (d,i) => mainLabelOffsets[i].anchor)
+      .text(d => d.name);
+    g.append("text").attr("class","label")
+      .attr("x", (d,i) => mainLabelOffsets[i].x).attr("y", (d,i) => mainLabelOffsets[i].y + 12)
+      .attr("text-anchor", (d,i) => mainLabelOffsets[i].anchor)
+      .attr("font-weight","600").text(d => d.place);
+    g.append("text").attr("class","sub")
+      .attr("x", (d,i) => mainLabelOffsets[i].x).attr("y", (d,i) => mainLabelOffsets[i].y + 23)
+      .attr("text-anchor", (d,i) => mainLabelOffsets[i].anchor)
+      .text(d => d.years);
 
     // --- India inset box, bottom-right corner ---
     const insetW = 260, insetH = 220, insetX = width - insetW - 16, insetY = height - insetH - 16;
@@ -93,12 +109,21 @@ fetch("https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json")
       const b = projI([indiaNodes[i+1].lon, indiaNodes[i+1].lat]);
       const mx = (a[0]+b[0])/2 + 22, my = (a[1]+b[1])/2;
       clippedG.append("path").attr("d", lineI([a,[mx,my],b]))
-        .attr("fill","none").attr("stroke","#9c6b30").attr("stroke-width",1.6).attr("stroke-dasharray","3 2");
+        .attr("fill","none").attr("stroke","#9c6b30").attr("stroke-width",2).attr("stroke-dasharray","7 2");
     }
     const gI = clippedG.selectAll("g.node").data(indiaNodes).enter().append("g")
       .attr("transform", d => { const p = projI([d.lon, d.lat]); return "translate(" + p[0] + "," + p[1] + ")"; });
     gI.append("circle").attr("r", 4).attr("fill", "#4a6741").attr("stroke", "#fff").attr("stroke-width", 1.2);
-    gI.append("text").attr("class", "sub").attr("x", 7).attr("y", 3).attr("font-weight", "600")
+    const insetLabelOffsets = [
+      {dx: 8, dy: -6},
+      {dx: 8, dy: 14},
+      {dx: -8, dy: 16, anchor: "end"}
+    ];
+    gI.append("text").attr("class", "sub")
+      .attr("x", (d,i) => insetLabelOffsets[i].dx)
+      .attr("y", (d,i) => insetLabelOffsets[i].dy)
+      .attr("text-anchor", (d,i) => insetLabelOffsets[i].anchor || "start")
+      .attr("font-weight", "600")
       .text(d => d.place.replace(", India",""));
   });
 </script>
