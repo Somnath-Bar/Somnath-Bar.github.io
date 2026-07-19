@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;} a{color:inherit;} a:hover{text-decoration:underline;}</style>
+</helmet>
+<div style="--bg:#f7f5ee;--card:#ffffff;--ink:#1f2a22;--ink-soft:#54604f;--accent:#4a6741;--accent2:#9c6b30;--line:#ddd7c4;--sidebar:#1f2a22;--sidebar-ink:#efe9d8;font-family:'Public Sans',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;display:flex;">
+
+  <aside style="width:280px;flex-shrink:0;background:var(--sidebar);color:var(--sidebar-ink);padding:48px 32px;display:flex;flex-direction:column;gap:40px;position:sticky;top:0;height:100vh;overflow-y:auto;box-sizing:border-box;">
+    <div>
+      <a href="https://scholar.google.com/citations?user=kUz-9RwAAAAJ&hl=en" target="_blank" rel="noopener" style="font-family:'Newsreader',serif;font-size:26px;font-weight:600;color:inherit;text-decoration:none;">Somnath Bar</a>
+    </div>
+    <nav style="display:flex;flex-direction:column;gap:2px;">
+      <a href="index.html" style="padding:10px 12px;border-radius:4px;text-decoration:none;font-size:15px;border-left:3px solid transparent;color:#d8dcc9;" style-hover="background:rgba(255,255,255,0.06);">Home</a>
+      <a href="academic.dc.html" style="padding:10px 12px;border-radius:4px;text-decoration:none;font-size:15px;border-left:3px solid transparent;color:#d8dcc9;" style-hover="background:rgba(255,255,255,0.06);">Academic</a>
+      <a href="research-interest.dc.html" style="padding:10px 12px;border-radius:4px;text-decoration:none;font-size:15px;border-left:3px solid transparent;color:#d8dcc9;" style-hover="background:rgba(255,255,255,0.06);">Research Interest</a>
+      <a href="publications.dc.html" style="padding:10px 12px;border-radius:4px;text-decoration:none;font-size:15px;border-left:3px solid transparent;color:#d8dcc9;" style-hover="background:rgba(255,255,255,0.06);">Publications</a>
+      <a href="software-skills.dc.html" style="padding:10px 12px;border-radius:4px;text-decoration:none;font-size:15px;border-left:3px solid transparent;color:#d8dcc9;" style-hover="background:rgba(255,255,255,0.06);">Software &amp; Skills</a>
+      <a href="invited-talks.dc.html" style="padding:10px 12px;border-radius:4px;text-decoration:none;font-size:15px;border-left:3px solid transparent;color:#d8dcc9;" style-hover="background:rgba(255,255,255,0.06);">Invited Talks/Lecture</a>
+      <a href="training-workshops.dc.html" style="padding:10px 12px;border-radius:4px;text-decoration:none;font-size:15px;border-left:3px solid transparent;color:#d8dcc9;" style-hover="background:rgba(255,255,255,0.06);">Training &amp; Workshop</a>
+      <a href="professional-service.dc.html" style="padding:10px 12px;border-radius:4px;text-decoration:none;font-size:15px;border-left:3px solid transparent;color:#d8dcc9;" style-hover="background:rgba(255,255,255,0.06);">Professional Service</a>
+      <a href="portfolio.dc.html" style="padding:10px 12px;border-radius:4px;text-decoration:none;font-size:15px;background:rgba(255,255,255,0.08);border-left:3px solid var(--accent2);font-weight:600;">Portfolio</a>
+    </nav>
+    <div style="margin-top:auto;font-size:13px;color:#9fab8e;line-height:1.7;">
+      <a href="mailto:somnatb@uci.edu" style="color:#c7cfb8;text-decoration:none;" style-hover="text-decoration:underline;">somnatb@uci.edu</a>
+      <div style="margin-top:10px;">Dept. of Civil &amp; Environmental Engineering<br/>University of California, Irvine<br/><a href="https://faculty.sites.uci.edu/banerjeelab/lab-members/" target="_blank" rel="noopener" style="color:#c7cfb8;text-decoration:none;">Banerjee Lab (UCI)</a></div>
+    </div>
+  </aside>
+
+  <main style="flex:1;padding:72px 64px 100px;max-width:1080px;box-sizing:border-box;">
+    <div style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent2);font-weight:600;">Selected Work</div>
+    <h1 style="font-family:'Newsreader',serif;font-size:38px;font-weight:600;margin:14px 0 8px;">Portfolio</h1>
+    <div style="font-size:15px;color:var(--ink-soft);margin-bottom:44px;max-width:640px;line-height:1.6;">Research grouped by thematic focus. Each card highlights a representative study — drop the key figure from the paper into its image slot.</div>
+
+    <!-- Group 1 -->
+    <div style="margin-bottom:56px;">
+      <h2 style="font-family:'Newsreader',serif;font-size:24px;font-weight:600;margin:0 0 4px;color:var(--ink);">Extreme Climate &amp; Hazard and Disasters</h2>
+      <div style="font-size:14px;color:var(--ink-soft);margin-bottom:20px;max-width:700px;">Wildfire regime dynamics, burn-area and emissions modeling, and disaster-damage attribution across fire-prone landscapes.</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+        <div style="background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;">
+          <img src="assets/fig-p1-1-building-damage-wildfires.png" alt="Key figure — Bar et al., building damage from wildfires" style="width:100%;height:150px;object-fit:cover;display:block;background:#eee;" />
+          <div style="padding:16px;">
+            <div style="font-size:13px;font-weight:600;line-height:1.4;">Explaining building damage from wildfires in California</div>
+            <div style="font-size:12px;color:var(--ink-soft);margin-top:6px;"><a href="https://doi.org/10.1126/sciadv.aed4197" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;"><em>Science Advances</em>, 2026 (in-press)</a></div>
+          </div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;">
+          <img src="assets/fig-p1-2-burn-area-india.png" alt="Key figure — burn area over India" style="width:100%;height:150px;object-fit:cover;display:block;background:#eee;" />
+          <div style="padding:16px;">
+            <div style="font-size:13px;font-weight:600;line-height:1.4;">Fire regime dynamics and burn area modeling over India</div>
+            <div style="font-size:12px;color:var(--ink-soft);margin-top:6px;"><a href="https://doi.org/10.1007/s11356-024-32922-w" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;"><em>Environ. Sci. &amp; Pollut. Res.</em>, 2024</a></div>
+          </div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;">
+          <img src="assets/fig-p1-3-fire-emissions-himalaya.png" alt="Key figure — fire emissions, Himalaya" style="width:100%;height:150px;object-fit:cover;display:block;background:#eee;" />
+          <div style="padding:16px;">
+            <div style="font-size:13px;font-weight:600;line-height:1.4;">Long-term forest fire emissions over the Himalaya</div>
+            <div style="font-size:12px;color:var(--ink-soft);margin-top:6px;"><a href="https://doi.org/10.3390/rs14215302" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;"><em>Remote Sensing</em>, 2022</a></div>
+          </div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;">
+          <img src="assets/fig-p1-4-landscape-fire-w-himalaya.png" alt="Key figure — landscape fire, Western Himalaya" style="width:100%;height:150px;object-fit:cover;display:block;background:#eee;" />
+          <div style="padding:16px;">
+            <div style="font-size:13px;font-weight:600;line-height:1.4;">Spatio-temporal characterization of landscape fire in relation to anthropogenic activity and climatic variability, Western Himalaya</div>
+            <div style="font-size:12px;color:var(--ink-soft);margin-top:6px;"><a href="https://doi.org/10.1080/15481603.2021.1879495" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;"><em>GIScience &amp; Remote Sensing</em>, 2021</a></div>
+          </div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;">
+          <img src="assets/fig-p1-5-fire-occurrence-elevational.png" alt="Key figure — fire occurrence, elevational gradient" style="width:100%;height:150px;object-fit:cover;display:block;background:#eee;" />
+          <div style="padding:16px;">
+            <div style="font-size:13px;font-weight:600;line-height:1.4;">Modeling and prediction of fire occurrences along an elevational gradient in Western Himalayas</div>
+            <div style="font-size:12px;color:var(--ink-soft);margin-top:6px;"><a href="https://doi.org/10.1016/j.apgeog.2022.102867" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;"><em>Applied Geography</em>, 2023</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Group 2 -->
+    <div style="margin-bottom:56px;">
+      <h2 style="font-family:'Newsreader',serif;font-size:24px;font-weight:600;margin:0 0 4px;color:var(--ink);">Climate &amp; Atmospheric Change</h2>
+      <div style="font-size:14px;color:var(--ink-soft);margin-bottom:20px;max-width:700px;">Atmospheric and surface response to abrupt anthropogenic shifts — air quality, land surface temperature, and emissions.</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+        <div style="background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;">
+          <img src="assets/fig-p2-1-no2-pm25-lockdown.png" alt="Key figure — NO2/PM2.5 during lockdown" style="width:100%;height:150px;object-fit:cover;display:block;background:#eee;" />
+          <div style="padding:16px;">
+            <div style="font-size:13px;font-weight:600;line-height:1.4;">Impacts of COVID-19 lockdown on NO2 and PM2.5 in major cities</div>
+            <div style="font-size:12px;color:var(--ink-soft);margin-top:6px;"><a href="https://doi.org/10.1016/j.cities.2021.103308" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;"><em>Cities</em>, 2021</a></div>
+          </div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;">
+          <img src="assets/fig-p2-2-lst-lockdown.png" alt="Key figure — LST during lockdown" style="width:100%;height:150px;object-fit:cover;display:block;background:#eee;" />
+          <div style="padding:16px;">
+            <div style="font-size:13px;font-weight:600;line-height:1.4;">Impact of lockdown on land surface temperature, Europe &amp; N. America</div>
+            <div style="font-size:12px;color:var(--ink-soft);margin-top:6px;"><a href="https://doi.org/10.1016/j.scs.2021.103336" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;"><em>Sustainable Cities and Society</em>, 2021</a></div>
+          </div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;">
+          <img src="assets/fig-p2-3-co2-decline-india.png" alt="Key figure — CO2 emission decline, India" style="width:100%;height:150px;object-fit:cover;display:block;background:#eee;" />
+          <div style="padding:16px;">
+            <div style="font-size:13px;font-weight:600;line-height:1.4;">Short-term decline in anthropogenic CO2 emission in India</div>
+            <div style="font-size:12px;color:var(--ink-soft);margin-top:6px;"><a href="https://doi.org/10.1177/0309133320966741" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;"><em>Progress in Physical Geography</em>, 2021</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Group 3 -->
+    <div style="margin-bottom:56px;">
+      <h2 style="font-family:'Newsreader',serif;font-size:24px;font-weight:600;margin:0 0 4px;color:var(--ink);">Vegetation &amp; Essential Climate Variables</h2>
+      <div style="font-size:14px;color:var(--ink-soft);margin-bottom:20px;max-width:700px;">Satellite-derived biophysical and biochemical retrievals for vegetation, agriculture, and land-cover monitoring.</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+        <div style="background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;">
+          <img src="assets/fig-p3-1-forest-biophysical.png" alt="Key figure — forest biophysical parameters" style="width:100%;height:150px;object-fit:cover;display:block;background:#eee;" />
+          <div style="padding:16px;">
+            <div style="font-size:13px;font-weight:600;line-height:1.4;">Estimating forest biophysical &amp; biochemical parameters, Behali Reserve Forest</div>
+            <div style="font-size:12px;color:var(--ink-soft);margin-top:6px;"><a href="https://doi.org/10.1007/s42965-024-00359-4" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;"><em>Tropical Ecology</em>, 2024</a></div>
+          </div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;">
+          <img src="assets/fig-p3-2-tea-plantation.png" alt="Key figure — tea plantation monitoring" style="width:100%;height:150px;object-fit:cover;display:block;background:#eee;" />
+          <div style="padding:16px;">
+            <div style="font-size:13px;font-weight:600;line-height:1.4;">Assessing tea plantation biophysical characteristics, NE India</div>
+            <div style="font-size:12px;color:var(--ink-soft);margin-top:6px;"><a href="https://doi.org/10.1007/s10661-024-12502-8" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;"><em>Environ. Monit. Assess.</em>, 2024</a></div>
+          </div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;">
+          <img src="assets/fig-p3-3-paddy-rice-mapping.png" alt="Key figure — paddy rice mapping" style="width:100%;height:150px;object-fit:cover;display:block;background:#eee;" />
+          <div style="padding:16px;">
+            <div style="font-size:13px;font-weight:600;line-height:1.4;">Mapping active paddy rice area over monsoon Asia</div>
+            <div style="font-size:12px;color:var(--ink-soft);margin-top:6px;"><a href="https://doi.org/10.1080/10106049.2022.2032396" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;"><em>Geocarto International</em>, 2022</a></div>
+          </div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;">
+          <img src="assets/fig-p3-4-gbov-eo-validation.png" alt="Key figure — GBOV EO data validation" style="width:100%;height:150px;object-fit:cover;display:block;background:#eee;" />
+          <div style="padding:16px;">
+            <div style="font-size:13px;font-weight:600;line-height:1.4;">GBOV service: Latest product updates for EO data validation</div>
+            <div style="font-size:12px;color:var(--ink-soft);margin-top:6px;"><a href="https://doi.org/10.5194/egusphere-egu24-10447" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">EGU General Assembly, 2024</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Group 4 -->
+    <div>
+      <h2 style="font-family:'Newsreader',serif;font-size:24px;font-weight:600;margin:0 0 4px;color:var(--ink);">Climate Mitigation &amp; Policy</h2>
+      <div style="font-size:14px;color:var(--ink-soft);margin-bottom:20px;max-width:700px;">Coastal vulnerability, ecosystem resilience, and resource management under a changing climate.</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+        <div style="background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;">
+          <img src="assets/fig-p4-1-sundarbans-mangroves.png" alt="Key figure — Sundarbans mangroves" style="width:100%;height:150px;object-fit:cover;display:block;background:#eee;" />
+          <div style="padding:16px;">
+            <div style="font-size:13px;font-weight:600;line-height:1.4;">Shoreline changes and impact on Sundarbans mangrove ecosystems</div>
+            <div style="font-size:12px;color:var(--ink-soft);margin-top:6px;"><a href="https://doi.org/10.1016/j.jclepro.2020.124764" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;"><em>Journal of Cleaner Production</em>, 2021</a></div>
+          </div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;">
+          <img src="assets/fig-p4-2-coastal-groundwater.png" alt="Key figure — coastal groundwater salinization" style="width:100%;height:150px;object-fit:cover;display:block;background:#eee;" />
+          <div style="padding:16px;">
+            <div style="font-size:13px;font-weight:600;line-height:1.4;">Salinization of coastal groundwater under climate change</div>
+            <div style="font-size:12px;color:var(--ink-soft);margin-top:6px;"><a href="https://doi.org/10.1007/978-981-15-6564-9_17" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">Book chapter, <em>Climate Change and Coastal Ecosystems</em>, 2021</a></div>
+          </div>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;">
+          <img src="assets/fig-p4-3-rainfall-threshold-rice.png" alt="Key figure — rainfall threshold, monsoon rice" style="width:100%;height:150px;object-fit:cover;display:block;background:#eee;" />
+          <div style="padding:16px;">
+            <div style="font-size:13px;font-weight:600;line-height:1.4;">Optimal rainfall threshold for monsoon rice production in India varies across space and time</div>
+            <div style="font-size:12px;color:var(--ink-soft);margin-top:6px;"><a href="https://doi.org/10.1038/s43247-024-01414-7" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;"><em>Communications Earth &amp; Environment</em>, 2024</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Group 5 -->
+    <div style="margin-top:56px;">
+      <h2 style="font-family:'Newsreader',serif;font-size:24px;font-weight:600;margin:0 0 4px;color:var(--ink);">Earth Observation &amp; Ecology</h2>
+      <div style="font-size:14px;color:var(--ink-soft);margin-bottom:20px;max-width:700px;">Multi-sensor satellite data and cloud-computing platforms applied to ecological and land-surface monitoring.</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+        <div style="background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;">
+          <img src="assets/fig-p5-1-uttarakhand-burn-area.png" alt="Key figure — Landsat-8/Sentinel-2 burn area, Uttarakhand" style="width:100%;height:150px;object-fit:cover;display:block;background:#eee;" />
+          <div style="padding:16px;">
+            <div style="font-size:13px;font-weight:600;line-height:1.4;">Forest fire burn area mapping using machine learning algorithms on GEE cloud platform over Uttarakhand, Western Himalaya (Landsat-8 &amp; Sentinel-2)</div>
+            <div style="font-size:12px;color:var(--ink-soft);margin-top:6px;"><a href="https://doi.org/10.1016/j.rsase.2020.100324" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;"><em>Remote Sensing Applications: Society and Environment</em>, 2020</a></div>
+          </div>
+        </div>
+        <div style="background:var(--card);border:1px dashed var(--line);border-radius:8px;display:flex;align-items:center;justify-content:center;padding:24px;font-size:13px;color:var(--ink-soft);text-align:center;">Space for upcoming work</div>
+        <div style="background:var(--card);border:1px dashed var(--line);border-radius:8px;display:flex;align-items:center;justify-content:center;padding:24px;font-size:13px;color:var(--ink-soft);text-align:center;">Space for upcoming work</div>
+      </div>
+    </div>
+  </main>
+</div>
+
+</x-dc>
+</body>
+</html>
